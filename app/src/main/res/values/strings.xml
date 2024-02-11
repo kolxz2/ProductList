@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ProductList</string>
+    <string name="add_button_description">Add new shop item</string>
+    <string name="bt_save">Save</string>
+    <string name="et_product_name">Product name</string>
+    <string name="et_product_count">Product count</string>
+    <string name="name">Name</string>
+    <string name="count">Count</string>
 </resources>

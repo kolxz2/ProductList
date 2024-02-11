@@ -6,7 +6,8 @@ import ru.nikolas_snek.productlist.domain.repository.ShopListRepository
 class DeleteShopItemUseCase(private val shopListRepository: ShopListRepository) {
 
     fun deleteSopItem(shopItem: ShopItem){
-        shopListRepository.deleteSopItem(shopItem)
+        shopListRepository.deleteShopItem(shopItem)
 
     }
+
 }

@@ -6,7 +6,7 @@ import ru.nikolas_snek.productlist.domain.repository.ShopListRepository
 
 class GetShopListUseCase(private val shopListRepository: ShopListRepository) {
 
-    fun getAllShopItem(): LiveData<List<ShopItem>>{
-        return shopListRepository.getAllShopItem()
+    fun getShopList(): LiveData<List<ShopItem>> {
+        return shopListRepository.getShopList()
     }
 }

@@ -1,7 +1,7 @@
 package ru.nikolas_snek.productlist.domain.repository
 
 data class ShopItem(
-    val Product :String,
+    val product :String,
     val count: Int,
     val enabled :Boolean,
     var id: Int = UNDEFINED_ID
