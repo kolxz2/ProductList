@@ -3,9 +3,12 @@ package ru.nikolas_snek.productlist.presentation.main_activity.recycler
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.ListAdapter
 import ru.nikolas_snek.productlist.R
 import ru.nikolas_snek.productlist.databinding.ItemShopDisabledBinding
+import ru.nikolas_snek.productlist.databinding.ItemShopEnabledBinding
 import ru.nikolas_snek.productlist.domain.repository.ShopItem
 
 
@@ -21,9 +24,9 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffUt
             VIEW_TYPE_ENABLED -> R.layout.item_shop_enabled
             else -> throw RuntimeException("Unknown view type: $viewType")
         }
-//        val view = LayoutInflater.from(parent.context).inflate(layout, parent, false)
-        val binding = ItemShopDisabledBinding.inflate(
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context),
+            layout,
             parent,
             false
         )
@@ -40,9 +43,16 @@ class ShopListAdapter : ListAdapter<ShopItem, ShopItemViewHolder>(ShopItemDiffUt
         binding.root.setOnClickListener {
             onShopItemClickListener?.invoke(shopItem)
         }
-        binding.tvProductCount.text =shopItem.count.toString()
-        binding.tvProductCount.text = shopItem.product
-
+        when(binding){
+            is ItemShopDisabledBinding ->{
+                binding.tvProductCount.text =shopItem.count.toString()
+                binding.tvProductName.text = shopItem.product
+            }
+            is ItemShopEnabledBinding -> {
+                binding.tvProductCount.text =shopItem.count.toString()
+                binding.tvProductName.text = shopItem.product
+            }
+        }
     }
 
     override fun getItemViewType(position: Int): Int {
